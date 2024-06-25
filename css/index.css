@@ -298,6 +298,13 @@ body {
     opacity: 0;
 }
 
+.learn-more-p {
+    /* start hidden but not taking up space then toggle it with javascript */
+    display: none;
+    transition: opacity 0.2s ease-in-out;
+}
+
+
 .portrait {
     padding: 0 0;
     width: 99%;

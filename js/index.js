@@ -5,6 +5,16 @@ $(".menuItems").find("a").on("click", function() {
 });
 
 
+$("#learn-more-project").on("click", function(e) {
+    e.preventDefault();
+    $(this).parent().find(".learn-more-p").toggle();
+    if ($(this).find("a").text() === "Learn more...") {
+        $(this).find("a").text("Read less...");
+    } else {
+        $(this).find("a").text("Learn more...");
+    }
+});
+
 
 $("a").on('click', function(event) {
 
