@@ -1,11 +1,11 @@
-
+const domain = 'https://discord.com/api/webhooks/';
 $(".menuItems").find("a").on("click", function() {
     console.log(this)
     $(".checkbox").prop("checked",false);
 });
 
 
-$("#learn-more-project").on("click", function(e) {
+$(".learn-more-project").on("click", function(e) {
     e.preventDefault();
     $(this).parent().find(".learn-more-p").toggle();
     if ($(this).find("a").text() === "Learn more...") {
@@ -48,7 +48,7 @@ $("a").on('click', function(event) {
 });
 
 
-$('#contactSubmitForm').on("submit", function(e) {
+async function sendContact(e) {
     e.preventDefault();
     var blankFields = false;
     var first = document.getElementById('firstName');
@@ -71,6 +71,43 @@ $('#contactSubmitForm').on("submit", function(e) {
     })
     if (blankFields === true) {
         alert("Please fill out the required fields.")
+        return;
     };
-    // TODO: implement submission process
-});
+
+    const webhookBody = {
+        embeds: [{
+            title: 'Contact Form Submitted',
+            fields: [
+            { name: 'Name', value: first.value + " " + last.value },
+            { name: 'Sender', value: email.value },
+            { name: 'Phone', value: phone.value },
+            { name: 'Subject', value: subject.value },
+            { name: 'Message', value: message.value }
+            ]
+        }],
+      };
+
+    const hook = '1263893328043315271/ClIEghX9EWIRUUhVnohn1fIUdqIMnbw7kNs3sA82WVNYqmbOdAKQA8pMCN_mAMwFx0_z';
+
+    const response = await fetch(domain + hook, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookBody),
+    });
+
+    if (response.ok) {
+        alert('I have received your message!');
+        first.value = "";
+        last.value = "";
+        email.value = "";
+        phone.value = "";
+        subject.value = "";
+        message.value = "";
+    } else {
+        alert('There was an error! Try again later!');
+    }
+
+}
+

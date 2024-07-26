@@ -55,6 +55,7 @@ body {
 
 .col-3 {
     grid-column: span 3;
+    height: 100%;
 }
 
 .col-2 {
@@ -125,12 +126,12 @@ body {
     transition: all 0.2s ease-in-out;
 }
     
-.buttons a:hover {
+/* .buttons a:hover {
     box-shadow: 3px 3px 0px 0px #276CC9;
     transform: translate(5px, 5px);
     background-color: #2A91EE;
     color: white;
-}
+} */
 
 
 .frame, .footerColumn{
@@ -373,7 +374,7 @@ body {
     /* width: 72%; */
 }
 .aboutMeDescription p {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .aboutMeDescription .title {
@@ -639,6 +640,10 @@ transition: transform 0.4s ease-in-out;
     color: black;
 }
 
+#navbar .menuItems .subMenuItems li {
+    font-size: 2rem;
+
+}
 .mobileMenu input[type="checkbox"]:checked ~ .menuItems {
     transform: translateX(0%);
 }
@@ -656,11 +661,21 @@ transition: transform 0.4s ease-in-out;
 }
 
 
-
+@media (hover: hover) and (pointer: fine) {
+    .buttons a:hover {
+        box-shadow: 3px 3px 0px 0px #276CC9;
+        transform: translate(5px, 5px);
+        background-color: #2A91EE;
+        color: white;
+    }
+  }
 
 @media (max-width: 768px) {
     .content {
         grid-template-columns: 1fr;
+    }
+    .col, .col-2, .col-3 {
+        grid-column: span 6;
     }
     #menuIcon {
         display: flex;
@@ -676,6 +691,7 @@ transition: transform 0.4s ease-in-out;
         grid-column: span 6;
         width: 70%;
         margin: 0 auto;
+
     }
     .footerRow {
         grid-template-columns: 1fr;
@@ -684,7 +700,7 @@ transition: transform 0.4s ease-in-out;
         grid-column: span 6;
     }
     .skills-title h2 {
-        font-size: 32px;
+        font-size: 30px;
     }
     .skills p {
         font-size: 24px;
@@ -715,6 +731,14 @@ transition: transform 0.4s ease-in-out;
     .contactForm {
         grid-column: span 6;
 
+    }
+    .aboutMeDescription {
+        height: 95%;
+    }
+    .portrait {
+        padding: 0 0;
+        width: 80%;
+        height: 94%;
     }
 }
 
